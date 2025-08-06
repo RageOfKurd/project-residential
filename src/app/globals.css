@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+html,
+body {
+  font-family: var(--font-airbnb-cereal), sans-serif;
+}

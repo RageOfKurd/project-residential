@@ -1,14 +1,41 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const airbnbCereal = localFont({
+  src: [
+    {
+      path: "./fonts/english/AirbnbCereal_W_Lt.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/english/AirbnbCereal_W_Bk.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/english/AirbnbCereal_W_Md.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/english/AirbnbCereal_W_Bd.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/english/AirbnbCereal_W_XBd.otf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "./fonts/english/AirbnbCereal_W_Blk.otf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-airbnb-cereal",
+  display: "swap", // Prevents FOUT (Flash of Unstyled Text)
 });
 
 export const metadata = {
@@ -19,11 +46,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${airbnbCereal.variable} antialiased`}>{children}</body>
     </html>
   );
 }
