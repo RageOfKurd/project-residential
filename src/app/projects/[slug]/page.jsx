@@ -7,9 +7,9 @@ async function ProjectPage({ params }) {
 
   // 3 image slides (you can swap URLs as needed)
   const slideImages = [
+    "https://dlishar.com/wp-content/uploads/2022/09/4.jpg",
     "https://dlishar.com/wp-content/uploads/2022/09/7.jpg",
-    "https://dlishar.com/wp-content/uploads/2022/09/7.jpg",
-    "https://dlishar.com/wp-content/uploads/2022/09/7.jpg",
+    "https://dlishar.com/wp-content/uploads/2022/09/11.jpg",
   ];
 
   return (

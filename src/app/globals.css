@@ -4,3 +4,13 @@ html,
 body {
   font-family: var(--font-airbnb-cereal), sans-serif;
 }
+
+.embla__viewport {
+  overflow: visible; /* Changed from hidden to visible */
+}
+.embla__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  will-change: transform; /* Helps with hardware acceleration */
+}

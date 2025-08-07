@@ -9,7 +9,11 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const mergedOptions = {
     loop: true,
+    skipSnaps: false,
+    duration: 30, // Adjust transition duration for smoother looping
+
     align: "center",
+    startIndex: 1,
     ...options,
   };
 
