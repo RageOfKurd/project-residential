@@ -13,7 +13,7 @@ async function ProjectPage({ params }) {
   ];
 
   return (
-    <main className="flex items-center justify-center">
+    <main className="flex items-center overflow-hidden justify-center">
       <div className="max-w-7xl w-full mx-auto px-0 py-8">
         <section className="flex gap-4 flex-col items-center justify-center">
           <Image

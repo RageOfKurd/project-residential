@@ -53,7 +53,7 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
 
   return (
     <div className="embla w-full  md:px-12">
-      <div className="embla__viewport overflow-hidden" ref={emblaRef}>
+      <div className="embla__viewport " ref={emblaRef}>
         <div className="embla__container flex gap-4">
           {slides.map((src, index) => (
             <div
