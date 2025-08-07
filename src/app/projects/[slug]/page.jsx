@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import EmblaCarousel from "@/components/carousel";
+import Float from "@/components/fancy/blocks/float";
 
 async function ProjectPage({ params }) {
   const { slug } = await params;
@@ -16,13 +17,21 @@ async function ProjectPage({ params }) {
     <main className="flex items-center overflow-hidden justify-center">
       <div className="max-w-7xl w-full mx-auto px-0 py-8">
         <section className="flex gap-6 flex-col items-center justify-center">
-          <Image
-            src="https://a0.muscache.com/im/pictures/canvas/Canvas-1745619168366/original/715e973a-30ea-4c3c-99bf-64fccb0c3f42.jpeg?im_w=480"
-            alt={`Project ${slug}`}
-            width={500}
-            height={500}
-            className="w-20 h-20"
-          />
+          <Float
+            rotationRange={[
+              2 + Math.random() * 2,
+              2 + Math.random() * 2,
+              2 + Math.random() * 2,
+            ]}
+          >
+            <Image
+              src="https://a0.muscache.com/im/pictures/canvas/Canvas-1745619168366/original/715e973a-30ea-4c3c-99bf-64fccb0c3f42.jpeg?im_w=480"
+              alt={`Project ${slug}`}
+              width={500}
+              height={500}
+              className="w-22 h-22"
+            />
+          </Float>
 
           <h1 className="text-4xl max-w-xs text-center text-stone-700 font-semibold">
             Right at the Heart of The City
