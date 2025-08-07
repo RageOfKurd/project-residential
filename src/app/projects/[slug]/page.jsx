@@ -45,7 +45,7 @@ async function ProjectPage({ params }) {
             carved with the latest modern designs by major engineering
             companies.
           </p>
-          <div className={`w-full max-w-16  h-0.5 bg-stone-500`} />
+          <div className={`w-full max-w-16  h-0.5 bg-stone-200`} />
           <BigButton>Explore Gallery</BigButton>
         </section>
       </div>
