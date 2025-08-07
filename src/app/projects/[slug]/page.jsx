@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import EmblaCarousel from "@/components/carousel";
 import Float from "@/components/fancy/blocks/float";
+import BigButton from "@/components/buttons/big-button";
 
 async function ProjectPage({ params }) {
   const { slug } = await params;
@@ -33,17 +34,19 @@ async function ProjectPage({ params }) {
             />
           </Float>
 
-          <h1 className="text-4xl max-w-xs text-center text-stone-700 font-semibold">
+          <h1 className="text-4xl md:text-5xl max-w-xs md:max-w-md text-center text-stone-700 font-semibold">
             Right at the Heart of The City
           </h1>
 
           {/* ✅ Carousel replaces the single <article> */}
           <EmblaCarousel slides={slideImages} />
 
-          <p className="text-xl max-w-[22rem] mt-2 text-center text-stone-600 font-normal">
+          <p className="text-xl md:text-2xl tracking-tight max-w-[22rem] md:max-w-xs mt-4 text-center text-stone-600 font-normal">
             carved with the latest modern designs by major engineering
             companies.
           </p>
+          <div className={`w-full max-w-16  h-0.5 bg-stone-500`} />
+          <BigButton>Explore Gallery</BigButton>
         </section>
       </div>
     </main>

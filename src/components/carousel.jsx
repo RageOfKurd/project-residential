@@ -93,7 +93,7 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
               key={index}
               className="embla__slide  flex-[0_0_80%] md:flex-[0_0_50%] max-w-[80%] md:max-w-[50%] aspect-square md:aspect-[6/4] w-full"
             >
-              <div className="embla__slide__image  rounded-xl shadow-xl shadow-stone-500/80 w-full h-full overflow-hidden">
+              <div className="embla__slide__image   rounded-xl shadow-xl shadow-stone-500/80 w-full h-full overflow-hidden">
                 <Image
                   src={src}
                   alt={`Slide ${index % slides.length}`}
