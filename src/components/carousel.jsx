@@ -1,11 +1,12 @@
 "use client";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 
 const SCALE_MIN = 0.9;
 
 const EmblaCarousel = ({ slides = [], options = {} }) => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const mergedOptions = {
     loop: true,
     align: "center",
@@ -13,63 +14,80 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
   };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(mergedOptions);
-  const slideRefs = useRef([]);
 
   const updateStyles = useCallback(() => {
     if (!emblaApi) return;
 
-    const scrollProgress = emblaApi.scrollProgress();
-    const scrollSnapList = emblaApi.scrollSnapList();
+    const selectedIndex = emblaApi.selectedScrollSnap();
+    const slideCount = emblaApi.slideNodes().length;
 
-    scrollSnapList.forEach((snap, index) => {
-      let diffToTarget = snap - scrollProgress;
+    emblaApi.slideNodes().forEach((slideNode, index) => {
+      let diffToSelected = index - selectedIndex;
 
-      // ✅ Use mergedOptions.loop instead of emblaApi.options.loop
-      const normalizedDiff =
-        Math.abs(diffToTarget) > 0.5 && mergedOptions.loop
-          ? 1 - Math.abs(diffToTarget)
-          : diffToTarget;
+      if (diffToSelected > slideCount / 2) diffToSelected -= slideCount;
+      if (diffToSelected < -slideCount / 2) diffToSelected += slideCount;
 
-      const scale =
-        1 - (1 - SCALE_MIN) * Math.min(Math.abs(normalizedDiff * 2), 1);
+      const absDiff = Math.abs(diffToSelected);
+      const clampedDiff = Math.min(absDiff, 1);
 
-      const imageEl = slideRefs.current[index];
-      if (imageEl) {
-        imageEl.style.transform = `scale(${scale.toFixed(3)})`;
-        imageEl.style.transition = `transform 0.3s ease-out`;
-      }
+      const scale = 1 - (1 - SCALE_MIN) * clampedDiff;
+      const maxTranslateY = 40;
+      const translateY = maxTranslateY * clampedDiff;
+
+      // Only apply transition after initialization to prevent initial lag
+      const transition = isInitialized ? "transform 0.3s ease-out" : "none";
+
+      slideNode.style.transform = `scale(${scale.toFixed(
+        3
+      )}) translateY(${translateY}px)`;
+      slideNode.style.transition = transition;
+      slideNode.style.willChange = "transform"; // Optimize for hardware acceleration
     });
-  }, [emblaApi, mergedOptions.loop]);
+
+    if (!isInitialized) {
+      setIsInitialized(true);
+    }
+  }, [emblaApi, isInitialized]);
 
   useEffect(() => {
     if (!emblaApi) return;
 
+    // Initialize styles immediately
     updateStyles();
+
+    const onSelect = () => {
+      requestAnimationFrame(updateStyles);
+    };
+
     emblaApi
-      .on("scroll", updateStyles)
+      .on("scroll", onSelect)
       .on("reInit", updateStyles)
-      .on("select", updateStyles);
+      .on("select", onSelect);
+
+    return () => {
+      emblaApi.off("scroll", onSelect);
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi, updateStyles]);
 
   return (
-    <div className="embla w-full  md:px-12">
-      <div className="embla__viewport " ref={emblaRef}>
-        <div className="embla__container flex gap-4">
+    <div className="embla w-full md:px-12">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container flex gap-6 md:gap-8">
           {slides.map((src, index) => (
             <div
               key={index}
-              className="embla__slide flex-[0_0_80%] md:flex-[0_0_50%] max-w-[80%] md:max-w-[50%] aspect-square md:aspect-[6/4] w-full"
+              className="embla__slide flex-[0_0_70%] md:flex-[0_0_40%] max-w-[70%] md:max-w-[40%] aspect-square md:aspect-[6/4] w-full"
             >
-              <div
-                ref={(el) => (slideRefs.current[index] = el)}
-                className="embla__slide__image bg-purple-800 rounded-xl shadow-xl shadow-stone-500/60 w-full h-full overflow-hidden"
-              >
+              <div className="embla__slide__image bg-gray-200 rounded-xl shadow-xl shadow-stone-500/60 w-full h-full overflow-hidden">
                 <Image
                   src={src}
                   alt={`Slide ${index}`}
                   width={1000}
                   height={1000}
                   className="object-cover object-center w-full h-full rounded-xl"
+                  priority={index === 0} // Prioritize first image
+                  loading={index === 0 ? "eager" : "lazy"}
                 />
               </div>
             </div>
