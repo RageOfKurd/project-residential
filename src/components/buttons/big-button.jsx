@@ -6,7 +6,7 @@ const BigButton = ({ children, ...props }) => {
   return (
     <button
       role="button"
-      className="purple-button"
+      className="purple-button "
       onClick={() => {}}
       {...props}
     >
