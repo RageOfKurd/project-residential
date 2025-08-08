@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
+import BlurVignette from "@/components/ui/blur-vignette";
 
 const SCALE_MIN = 0.9;
 const SLIDE_GAP = 0; // gap between slides in pixels
@@ -94,15 +95,23 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
               className="embla__slide  flex-[0_0_80%] md:flex-[0_0_55%] max-w-[80%] md:max-w-[55%] aspect-square md:aspect-[6/4] w-full"
             >
               <div className="embla__slide__image   rounded-xl shadow-xl shadow-stone-500/80 w-full h-full overflow-hidden">
-                <Image
-                  src={src}
-                  alt={`Slide ${index % slides.length}`}
-                  width={1000}
-                  height={1000}
-                  className="object-cover  object-center w-full h-full rounded-xl"
-                  priority={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
+                <BlurVignette
+                  radius="0px"
+                  inset="2px"
+                  transitionLength="60px"
+                  blur="100px"
+                  className="aspect-square  flex-1 "
+                >
+                  <Image
+                    src={src}
+                    alt={`Slide ${index % slides.length}`}
+                    width={1000}
+                    height={1000}
+                    className="object-cover  object-center w-full h-full rounded-xl"
+                    priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </BlurVignette>
               </div>
             </div>
           ))}
