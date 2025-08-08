@@ -7,6 +7,7 @@ import LogoIcon from "@/components/logo-icon";
 import SubTitle from "@/components/texts/sub-title";
 import Divider from "@/components/divider";
 import { motion } from "framer-motion";
+import { ImageDrawer } from "../image-drawer";
 
 // Parent animation setup
 const containerVariants = {
@@ -79,7 +80,9 @@ function HeroSecton({ slug }) {
           variants={childVariants}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
-          <BigButton>Explore Gallery</BigButton>
+          <ImageDrawer>
+            <BigButton>Explore Gallery</BigButton>
+          </ImageDrawer>
         </motion.div>
       </div>
     </motion.section>
