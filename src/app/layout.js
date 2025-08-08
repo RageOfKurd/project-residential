@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import "react-photo-view/dist/react-photo-view.css";
 
 const airbnbCereal = localFont({
   src: [

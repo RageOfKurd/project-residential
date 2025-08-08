@@ -34,7 +34,13 @@ function DrawerOverlay({ className, ...props }) {
   );
 }
 
-function DrawerContent({ className, children, desiredHeight, ...props }) {
+function DrawerContent({
+  className,
+  children,
+  desiredHeight,
+  overlayRef,
+  ...props
+}) {
   let heightStyle;
 
   if (desiredHeight === "full") {
@@ -58,7 +64,8 @@ function DrawerContent({ className, children, desiredHeight, ...props }) {
 
   return (
     <DrawerPortal data-slot="drawer-portal">
-      <DrawerOverlay />
+      {/* Attach the overlayRef here */}
+      <DrawerOverlay ref={overlayRef} />
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         style={heightStyle}

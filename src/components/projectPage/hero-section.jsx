@@ -8,6 +8,7 @@ import SubTitle from "@/components/texts/sub-title";
 import Divider from "@/components/divider";
 import { motion } from "framer-motion";
 import { ImageDrawer } from "../image-drawer";
+import { PhotoProvider } from "react-photo-view";
 
 // Parent animation setup
 const containerVariants = {
@@ -62,7 +63,6 @@ function HeroSecton({ slug }) {
           <Carousel slides={slideImages} />
         </motion.div>
         <motion.div variants={childVariants}>
-          {" "}
           <SubTitle
             text={`carved with the latest modern designs by major engineering companies.`}
           />

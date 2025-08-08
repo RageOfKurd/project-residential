@@ -1,5 +1,4 @@
 import React from "react";
-
 import HeroSecton from "@/components/projectPage/hero-section";
 
 async function ProjectPage({ params }) {
