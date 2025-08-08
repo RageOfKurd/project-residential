@@ -4,12 +4,7 @@ import "./big-button.css";
 
 const BigButton = ({ children, ...props }) => {
   return (
-    <button
-      role="button"
-      className="purple-button "
-      onClick={() => {}}
-      {...props}
-    >
+    <button role="button" className="purple-button" {...props}>
       <span className="purple-text">{children || "Golden Button"}</span>
     </button>
   );
