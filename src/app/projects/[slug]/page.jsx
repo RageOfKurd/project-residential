@@ -15,8 +15,8 @@ async function ProjectPage({ params }) {
 
   return (
     <main className="flex items-center overflow-hidden relative justify-center">
-      <div className="max-w-7xl w-full mx-auto px-0 py-8">
-        <section className="flex relative gap-6 flex-col items-center justify-center min-h-screen">
+      <div className="max-w-7xl w-full mx-auto px-0 xl:px-4 py-8">
+        <section className="flex relative gap-6 md:gap-10  flex-col items-center justify-center min-h-screen">
           {/* Content with proper z-index */}
           <div className="relative z-20 flex flex-col items-center justify-center gap-6 w-full">
             <Float
@@ -31,19 +31,19 @@ async function ProjectPage({ params }) {
                 alt={`Project ${slug}`}
                 width={500}
                 height={500}
-                className="w-22 h-22"
+                className="w-22 h-22 sm:w-24 sm:h-24"
               />
             </Float>
 
             <div className="relative">
-              <h1 className="text-4xl md:text-5xl max-w-xs md:max-w-md text-center font-semibold bg-gradient-to-b from-stone-700 to-stone-900 bg-clip-text text-transparent">
+              <h1 className="text-4xl sm:text-5xl max-w-xs sm:max-w-md text-center font-semibold bg-gradient-to-b from-stone-700 to-stone-900 bg-clip-text text-transparent">
                 Right at the Heart of The City
               </h1>
             </div>
 
             <EmblaCarousel slides={slideImages} />
 
-            <p className="text-xl md:text-2xl tracking-tight max-w-[22rem] md:max-w-xs mt-4 text-center text-stone-600 font-normal">
+            <p className="text-xl md:text-2xl tracking-tight max-w-[22rem] md:max-w-md mt-4 text-center text-stone-600 font-normal">
               carved with the latest modern designs by major engineering
               companies.
             </p>

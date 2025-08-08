@@ -88,26 +88,34 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
   return (
     <div className="embla w-full  ">
       <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container flex gap-2 md:gap-8">
+        <div className="embla__container flex gap-2 md:gap-4">
           {enhancedSlides.map((src, index) => (
             <div
               key={index}
-              className="embla__slide  flex-[0_0_80%] md:flex-[0_0_55%] max-w-[80%] md:max-w-[55%] aspect-square md:aspect-[6/4] w-full"
+              className="embla__slide  flex-[0_0_80%]  sm:flex-[0_0_60%] sm:max-w-[60%] max-w-[80%] md:flex-[0_0_80%]  md:max-w-[80%] lg:flex-[0_0_70%]  lg:max-w-[70%] xl:flex-[0_0_55%]  xl:max-w-[55%] aspect-square md:aspect-[6/4] w-full"
             >
-              <div className="embla__slide__image   rounded-xl shadow-xl shadow-stone-500/80 w-full h-full overflow-hidden">
+              <div
+                style={{
+                  backgroundImage: "url('/two.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+                className="embla__slide__image p-3   rounded-xl shadow-xl shadow-stone-500/80 w-full h-full overflow-visible"
+              >
                 <BlurVignette
                   radius="0px"
                   inset="2px"
                   transitionLength="60px"
                   blur="100px"
-                  className="aspect-square  flex-1 "
+                  className="aspect-square object-cover w-full h-full md:aspect-[6/4] rounded-xl  flex-1 "
                 >
                   <Image
                     src={src}
                     alt={`Slide ${index % slides.length}`}
                     width={1000}
                     height={1000}
-                    className="object-cover  object-center w-full h-full rounded-xl"
+                    className="object-cover  border-4 border-purple-900 object-center w-full h-full rounded-2xl"
                     priority={index === 0}
                     loading={index === 0 ? "eager" : "lazy"}
                   />
