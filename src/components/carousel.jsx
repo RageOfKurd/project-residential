@@ -91,7 +91,7 @@ const EmblaCarousel = ({ slides = [], options = {} }) => {
           {enhancedSlides.map((src, index) => (
             <div
               key={index}
-              className="embla__slide  flex-[0_0_80%] md:flex-[0_0_50%] max-w-[80%] md:max-w-[50%] aspect-square md:aspect-[6/4] w-full"
+              className="embla__slide  flex-[0_0_80%] md:flex-[0_0_55%] max-w-[80%] md:max-w-[55%] aspect-square md:aspect-[6/4] w-full"
             >
               <div className="embla__slide__image   rounded-xl shadow-xl shadow-stone-500/80 w-full h-full overflow-hidden">
                 <Image
