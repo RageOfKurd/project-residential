@@ -12,48 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
-const data = [
-  {
-    goal: 400,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 239,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 349,
-  },
-];
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function ImageDrawer({ children }) {
   const [goal, setGoal] = React.useState(350);
@@ -62,22 +21,28 @@ export function ImageDrawer({ children }) {
     <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent desiredHeight={"60%"}>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="mx-auto w-full">
           <DrawerHeader>
             <DrawerTitle className={`text-xl`}>Image Gallery</DrawerTitle>
-            <DrawerDescription>Browse overthe images</DrawerDescription>
+            <DrawerDescription>Browse over the images</DrawerDescription>
           </DrawerHeader>
-          <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
-                </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
-                  Calories/day
-                </div>
-              </div>
-            </div>
+          <div className="px-4 pb-0">
+            <Tabs defaultValue="tab-1" className="items-center">
+              <TabsList>
+                <TabsTrigger value="tab-1">Exterior Design</TabsTrigger>
+                <TabsTrigger value="tab-2">Interior Design</TabsTrigger>
+              </TabsList>
+              <TabsContent value="tab-1">
+                <p className="text-muted-foreground p-4 text-center text-xs">
+                  Content for Tab 1
+                </p>
+              </TabsContent>
+              <TabsContent value="tab-2">
+                <p className="text-muted-foreground p-4 text-center text-xs">
+                  Content for Tab 2
+                </p>
+              </TabsContent>
+            </Tabs>
           </div>
           <DrawerFooter>
             <DrawerClose asChild></DrawerClose>
