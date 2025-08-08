@@ -41,6 +41,8 @@
 }
 
 .golden-button:active {
+  transform: scale(0.95);
+  transition: transform 0.5s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
     inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
 }
@@ -80,6 +82,7 @@
   transition: all 0.2s ease-in-out;
   background-size: 100% 100%;
   background-position: center;
+  transition: transform 1s ease;
 }
 
 .purple-button:focus,
@@ -92,6 +95,8 @@
 }
 
 .purple-button:active {
+  transform: scale(0.95);
+  transition: transform 0.5s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(80, 20, 110, 0.4),
     inset 0 -2px 5px 1px #7d10b1, inset 0 -1px 1px 3px rgba(227, 133, 250, 1);
 }
@@ -143,6 +148,8 @@
 }
 
 .green-button:active {
+  transform: scale(0.95);
+  transition: transform 0.5s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(20, 110, 80, 0.4),
     inset 0 -2px 5px 1px #10b17d, inset 0 -1px 1px 3px rgba(133, 250, 227, 1);
 }
