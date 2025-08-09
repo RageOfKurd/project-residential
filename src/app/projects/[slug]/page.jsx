@@ -2,6 +2,7 @@ import React from "react";
 import HeroSecton from "@/components/projectPage/hero-section";
 import FeaturesSection from "@/components/projectPage/features-section";
 import AboutSection from "@/components/projectPage/about-section";
+import TypesSection from "@/components/projectPage/types-section";
 
 async function ProjectPage({ params }) {
   const { slug } = await params;
@@ -12,6 +13,7 @@ async function ProjectPage({ params }) {
         <HeroSecton slug={slug} />
         <FeaturesSection slug={slug} />
         <AboutSection slug={slug} />
+        <TypesSection slug={slug} />
       </div>
     </main>
   );

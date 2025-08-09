@@ -41,7 +41,7 @@ function AboutSection() {
       {/* Body text */}
       <motion.div
         variants={childVariants}
-        className="px-4 text-lg sm:text-xl text-stone-600 leading-relaxed text-justify max-w-3xl space-y-6"
+        className="px-4 text-lg sm:text-xl text-stone-600 leading-relaxed text-pretty text-justify max-w-3xl space-y-6"
       >
         <p>
           A project located in the heart of the city, designed with the latest
