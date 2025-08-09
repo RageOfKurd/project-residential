@@ -44,7 +44,7 @@ function HeroSecton({ slug }) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex relative gap-6 md:gap-10  flex-col items-center justify-center min-h-screen"
+      className="flex relative  gap-6 md:gap-10  flex-col items-center justify-center "
     >
       {/* Content with proper z-index */}
       <div className="relative z-20 flex flex-col items-center justify-center gap-6 w-full">

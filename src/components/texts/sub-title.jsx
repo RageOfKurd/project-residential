@@ -1,9 +1,15 @@
 "use client";
 import React from "react";
 
-function SubTitle({ text }) {
+function SubTitle({
+  text,
+  fontSize = "text-xl md:text-2xl",
+  maxWidth = "max-w-[22rem] md:max-w-md",
+}) {
   return (
-    <p className="text-xl md:text-2xl tracking-tight max-w-[22rem] md:max-w-md mt-4 text-center text-stone-600 font-normal">
+    <p
+      className={`${fontSize} ${maxWidth} tracking-tight  mt-4 text-center text-stone-600 font-normal`}
+    >
       {text}
     </p>
   );
