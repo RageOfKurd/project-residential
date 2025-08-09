@@ -7,12 +7,13 @@ function HeadingText({
   maxWidth = "max-w-xs sm:max-w-md",
   className = "",
   useGradient = true,
+  color = "from-stone-700 to-stone-900",
 }) {
   return (
     <h1
       className={`${className} ${fontSize} ${maxWidth} text-center font-semibold ${
         useGradient
-          ? "bg-gradient-to-b from-stone-700 to-stone-900 bg-clip-text text-transparent"
+          ? `bg-gradient-to-b ${color} bg-clip-text text-transparent`
           : ""
       }`}
     >
